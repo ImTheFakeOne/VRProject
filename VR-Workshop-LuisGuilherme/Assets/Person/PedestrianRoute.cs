@@ -9,6 +9,7 @@ public class PedestrianRoute : MonoBehaviour
     public int routeNumber = 0;
     public int targetWP = 0;
 
+    
     //Rigidbody rb = GetComponent<Rigidbody>();
 
     public bool go = false;
@@ -119,7 +120,7 @@ public class PedestrianRoute : MonoBehaviour
         else if (routeNumber == 11) route = new List<Transform> { wps[7], wps[5], wps[4], wps[1], wps[2] };
 
         //initialise position and waypoint counter
-        transform.position = new Vector3(route[0].position.x, 0.0f,
+        transform.position = new Vector3(route[0].position.x, 1.1f,
         route[0].position.z);
         targetWP = 1;
     } 
