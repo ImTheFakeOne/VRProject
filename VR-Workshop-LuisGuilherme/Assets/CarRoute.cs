@@ -12,6 +12,8 @@ public class CarRoute : MonoBehaviour
     public bool go = false;
     public float initialDelay;
 
+    public bool collision = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +34,7 @@ public class CarRoute : MonoBehaviour
 
         SetRoute();
 
-        //Delay pedestrians
+        //Delay cars
         initialDelay = Random.Range(2.0f, 12.0f);
         transform.position = new Vector3(0.0f, -5.0f, 0.0f);
     }
@@ -65,24 +67,30 @@ public class CarRoute : MonoBehaviour
             }
         }
 
-        //calculate velocity for this frame
-        Vector3 velocity = displacement;
-        velocity.Normalize();
-        velocity *= 2.5f;
+        if (collision == false)
+        {
+            //calculate velocity for this frame
+            Vector3 velocity = displacement;
+            velocity.Normalize();
+            velocity *= 10.0f;
 
-        //apply velocity
-        Vector3 newPosition = transform.position;
-        newPosition += velocity * Time.deltaTime;
+            //apply velocity
+            Vector3 newPosition = transform.position;
+            newPosition += velocity * Time.deltaTime;
 
-        Rigidbody rb = GetComponent<Rigidbody>();
+            Rigidbody rb = GetComponent<Rigidbody>();
 
-        rb.MovePosition(newPosition);
+            rb.MovePosition(newPosition);
 
-        //align to velocity
-        Vector3 desiredForward = Vector3.RotateTowards(transform.forward, velocity,
-        10.0f * Time.deltaTime, 0f);
-        Quaternion rotation = Quaternion.LookRotation(desiredForward);
-        rb.MoveRotation(rotation);
+            //align to velocity
+            Vector3 desiredForward = Vector3.RotateTowards(transform.forward, velocity,
+            10.0f * Time.deltaTime, 0f);
+            Quaternion rotation = Quaternion.LookRotation(desiredForward);
+            rb.MoveRotation(rotation);
+
+
+        }
+        
 
     }
 
@@ -99,4 +107,22 @@ public class CarRoute : MonoBehaviour
         route[0].position.z);
         targetWP = 1;
     } 
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (collision.gameObject.tag == "Pedestrian")
+        {
+            collision = true;
+        }
+        else
+        {
+            collision = false;
+        }
+        
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        collision = false;
+    }
 }
