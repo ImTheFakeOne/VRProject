@@ -61,6 +61,7 @@ public class TrafficLights : MonoBehaviour
             t3green.active = false;
             t3red.active = true;
         }
+        
         else
         {
             t1green.active = false;
