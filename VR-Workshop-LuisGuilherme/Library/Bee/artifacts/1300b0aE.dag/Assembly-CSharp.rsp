@@ -362,7 +362,7 @@
 -r:"Library/Bee/artifacts/1300b0aE.dag/UnityEngine.SpatialTracking.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/UnityEngine.UI.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/UnityEngine.XR.LegacyInputHelpers.ref.dll"
-"Assets/PedestrianRoute.cs"
+"Assets/Person/PedestrianRoute.cs"
 "Assets/Scripts/HandControl.cs"
 "Assets/Scripts/LeftHandControl.cs"
 "Assets/Scripts/RightHandControl.cs"
