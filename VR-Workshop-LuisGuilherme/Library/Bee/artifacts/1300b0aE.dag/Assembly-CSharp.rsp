@@ -366,6 +366,7 @@
 "Assets/Scripts/HandControl.cs"
 "Assets/Scripts/LeftHandControl.cs"
 "Assets/Scripts/RightHandControl.cs"
+"Assets/TrafficLights.cs"
 -langversion:9.0
 
 /deterministic
