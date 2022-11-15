@@ -362,12 +362,13 @@
 -r:"Library/Bee/artifacts/1300b0aE.dag/UnityEngine.SpatialTracking.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/UnityEngine.UI.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aE.dag/UnityEngine.XR.LegacyInputHelpers.ref.dll"
-"Assets/CarRoute.cs"
-"Assets/Person/PedestrianRoute.cs"
+"Assets/Scripts/CarRoute.cs"
 "Assets/Scripts/HandControl.cs"
 "Assets/Scripts/LeftHandControl.cs"
+"Assets/Scripts/PedestrianRoute.cs"
 "Assets/Scripts/RightHandControl.cs"
-"Assets/TrafficLights.cs"
+"Assets/Scripts/TrafficLights.cs"
+"Assets/SpawnObjects.cs"
 -langversion:9.0
 
 /deterministic
