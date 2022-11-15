@@ -35,7 +35,7 @@ public class CarRoute : MonoBehaviour
         SetRoute();
 
         //Delay cars
-        initialDelay = Random.Range(2.0f, 12.0f);
+        initialDelay = Random.Range(5.0f, 12.0f);
         transform.position = new Vector3(0.0f, -5.0f, 0.0f);
     }
 
@@ -110,12 +110,35 @@ public class CarRoute : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Pedestrian")
+        if (other.gameObject.tag == "Pedestrian")
         {
+            Debug.Log("Pedestrian");
             collision = true;
         }
-        else
+
+        else if(other.gameObject.tag == "Stop")
         {
+            Debug.Log("RedLight");
+            collision = true;
+        }
+
+        else if(other.gameObject.tag == "Go")
+        {
+            Debug.Log("GreenLight");
+            collision = false;
+        }
+
+        else if(other.gameObject.tag == "Vehicle")
+        {
+            Debug.Log("Vehicle");
+            StartCoroutine(wait());
+        }
+        
+
+        IEnumerator wait()
+        {
+            collision = true;
+            yield return new WaitForSeconds(Time.deltaTime);
             collision = false;
         }
         

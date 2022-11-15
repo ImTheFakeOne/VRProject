@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Pedestrian
+  - Traffic
+  - Vehicle
   layers:
   - Default
   - TransparentFX

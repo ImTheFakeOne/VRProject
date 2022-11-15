@@ -15,6 +15,7 @@ public class TrafficLights : MonoBehaviour
     public GameObject t3red;
     public float stateTimer;
     public int state;
+    
 
     // Start is called before the first frame update
     void Start()
