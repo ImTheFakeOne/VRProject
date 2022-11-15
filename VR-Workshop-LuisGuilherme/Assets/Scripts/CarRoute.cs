@@ -138,19 +138,14 @@ public class CarRoute : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Pedestrian" || col.gameObject.tag == "Stop")
+        if (col.gameObject.tag == "Pedestrian")
         {
             collision = true;
         }
 
-        else if(col.gameObject.tag == "Stop" && col.gameObject.tag == "Vehicle")
+        else if(col.gameObject.tag == "Stop")
         {
             collision = true;
-        }
-
-        else if(col.gameObject.tag == "Go" && col.gameObject.tag != "Vehicle")
-        {
-            collision = false;
         }
 
         else if(col.gameObject.tag == "Go")
@@ -168,7 +163,7 @@ public class CarRoute : MonoBehaviour
         {
             collision = true;
             yield return new WaitForSeconds(1);
-            collision = false;
+            
         }
         
     }
