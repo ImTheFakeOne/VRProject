@@ -368,7 +368,6 @@
 "Assets/Scripts/PedestrianRoute.cs"
 "Assets/Scripts/RightHandControl.cs"
 "Assets/Scripts/TrafficLights.cs"
-"Assets/SpawnObjects.cs"
 -langversion:9.0
 
 /deterministic
