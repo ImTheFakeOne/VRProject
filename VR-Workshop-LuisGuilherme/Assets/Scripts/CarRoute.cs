@@ -54,7 +54,7 @@ public class CarRoute : MonoBehaviour
         SetRoute();
 
         //Delay cars
-        initialDelay = Random.Range(5.0f, 12.0f);
+        initialDelay = Random.Range(10.0f, 30.0f);
         transform.position = new Vector3(0.0f, -5.0f, 0.0f);
     }
 
@@ -136,29 +136,30 @@ public class CarRoute : MonoBehaviour
         targetWP = 1;
     } 
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider col)
     {
-        if (other.gameObject.tag == "Pedestrian")
+        if (col.gameObject.tag == "Pedestrian" || col.gameObject.tag == "Stop")
         {
-            Debug.Log("Pedestrian");
             collision = true;
         }
 
-        else if(other.gameObject.tag == "Stop")
+        else if(col.gameObject.tag == "Stop" && col.gameObject.tag == "Vehicle")
         {
-            Debug.Log("RedLight");
             collision = true;
         }
 
-        else if(other.gameObject.tag == "Go")
+        else if(col.gameObject.tag == "Go" && col.gameObject.tag != "Vehicle")
         {
-            Debug.Log("GreenLight");
             collision = false;
         }
 
-        else if(other.gameObject.tag == "Vehicle")
+        else if(col.gameObject.tag == "Go")
         {
-            Debug.Log("Vehicle");
+            collision = false;
+        }
+
+        else if(col.gameObject.tag == "Vehicle")
+        {
             StartCoroutine(wait());
         }
         
@@ -166,13 +167,13 @@ public class CarRoute : MonoBehaviour
         IEnumerator wait()
         {
             collision = true;
-            yield return new WaitForSeconds(Time.deltaTime);
+            yield return new WaitForSeconds(1);
             collision = false;
         }
         
     }
 
-    void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider col)
     {
         collision = false;
     }
